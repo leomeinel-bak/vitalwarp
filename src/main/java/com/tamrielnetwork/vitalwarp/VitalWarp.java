@@ -51,7 +51,7 @@ public final class VitalWarp extends JavaPlugin {
 		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
 		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
 		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
-		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/VitalHome/blob/main/LICENSE for more details.");
+		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/VitalWarp/blob/main/LICENSE for more details.");
 	}
 
 	@Override
@@ -73,12 +73,12 @@ public final class VitalWarp extends JavaPlugin {
 
 	private void registerCommands() {
 
-		Objects.requireNonNull(getCommand("home")).setExecutor(new VitalWarpCmd());
-		Objects.requireNonNull(getCommand("home")).setTabCompleter(new VitalWarpCmd());
-		Objects.requireNonNull(getCommand("homes")).setExecutor(new VitalWarpsCmd());
-		Objects.requireNonNull(getCommand("sethome")).setExecutor(new VitalSetwarpCmd());
-		Objects.requireNonNull(getCommand("delhome")).setExecutor(new VitalDelWarpCmd());
-		Objects.requireNonNull(getCommand("delhome")).setTabCompleter(new VitalDelWarpCmd());
+		Objects.requireNonNull(getCommand("warp")).setExecutor(new VitalWarpCmd());
+		Objects.requireNonNull(getCommand("warp")).setTabCompleter(new VitalWarpCmd());
+		Objects.requireNonNull(getCommand("warps")).setExecutor(new VitalWarpsCmd());
+		Objects.requireNonNull(getCommand("setwarp")).setExecutor(new VitalSetwarpCmd());
+		Objects.requireNonNull(getCommand("delwarp")).setExecutor(new VitalDelWarpCmd());
+		Objects.requireNonNull(getCommand("delwarp")).setTabCompleter(new VitalDelWarpCmd());
 	}
 
 	public Messages getMessages() {
