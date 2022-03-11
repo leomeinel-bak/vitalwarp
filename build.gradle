@@ -1,0 +1,37 @@
+//file:noinspection GrUnresolvedAccess
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id "org.sonarqube" version "3.3"
+}
+
+group 'com.tamrielnetwork.vitalwarp'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://papermc.io/repo/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        duplicatesStrategy = 'INCLUDE'
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "TamrielNetwork_VitalWarp"
+        property "sonar.organization", "tamrielnetwork"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}

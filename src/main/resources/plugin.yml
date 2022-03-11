@@ -1,0 +1,36 @@
+name: VitalWarp
+version: @version@
+main: com.tamrielnetwork.vitalwarp.VitalWarp
+api-version: 1.17
+authors: [ Tamriel Network ]
+website: https://tamriel.site
+description: Gives players the ability to set warps and teleport to them.
+commands:
+  warp:
+    description: "Main command"
+    usage: "/warp <name>"
+  setwarp:
+    description: "Main command"
+    usage: "/setwarp <name>"
+  delwarp:
+    description: "Main command"
+    usage: "/delwarp <name>"
+  warps:
+    description: "Main command"
+    usage: "/warps"
+permissions:
+  vitalwarp.warp:
+    description: "Permission to warp"
+    default: op
+  vitalwarp.setwarp:
+    description: "Permission to set a warp"
+    default: op
+  vitalwarp.delwarp:
+    description: "Permission to delete a warp"
+    default: op
+  vitalwarp.list:
+    description: "Permission to list warps"
+    default: op
+  vitalwarp.delay.bypass:
+    description: "Permission to bypass delay"
+    default: op
