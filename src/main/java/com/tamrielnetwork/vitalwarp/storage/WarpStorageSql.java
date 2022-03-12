@@ -101,7 +101,8 @@ public class WarpStorageSql
 		Chat.sendMessage(player, "warp-set");
 		clear(arg);
 		try (PreparedStatement insertStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("INSERT INTO " + Sql.getPrefix() + "Warp (`Warp`, `World`, `X`, `Y`, `Z`, `Yaw`, `Pitch`) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+		                                                   .prepareStatement(
+				                                                   "INSERT INTO " + Sql.getPrefix() + "Warp (`Warp`, `World`, `X`, `Y`, `Z`, `Yaw`, `Pitch`) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
 			insertStatement.setString(1, arg);
 			insertStatement.setString(2, location.getWorld()
 			                                     .getName());
@@ -121,7 +122,8 @@ public class WarpStorageSql
 	@Override
 	public void clear(@NotNull String arg) {
 		try (PreparedStatement deleteStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("DELETE FROM " + Sql.getPrefix() + "Warp WHERE `Warp`=" + "'" + arg + "'")) {
+		                                                   .prepareStatement(
+				                                                   "DELETE FROM " + Sql.getPrefix() + "Warp WHERE `Warp`=" + "'" + arg + "'")) {
 			deleteStatement.executeUpdate();
 		}
 		catch (SQLException ignored) {
