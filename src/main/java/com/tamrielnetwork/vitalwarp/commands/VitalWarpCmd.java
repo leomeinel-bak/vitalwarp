@@ -48,7 +48,7 @@ public class VitalWarpCmd
 	}
 
 	private void doWarp(@NotNull CommandSender sender, String arg) {
-		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.warp", arg)) {
+		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.warp")) {
 			return;
 		}
 		Location location = main.getWarpStorage()

@@ -48,7 +48,7 @@ public class VitalDelWarpCmd
 	}
 
 	private void delWarp(@NotNull CommandSender sender, String arg) {
-		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.delwarp", arg)) {
+		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.delwarp")) {
 			return;
 		}
 		main.getWarpStorage()

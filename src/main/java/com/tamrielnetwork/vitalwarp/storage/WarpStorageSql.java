@@ -53,8 +53,8 @@ public class WarpStorageSql
 		int yaw = 0;
 		int pitch = 0;
 		try (PreparedStatement selectStatement = SqlManager.getConnection()
-		                                                   .prepareStatement(
-				                                                   "SELECT * FROM " + Sql.getPrefix() + "Warp")) {
+		                                                   .prepareStatement("SELECT * FROM ?" + "Warp")) {
+			selectStatement.setString(1, Sql.getPrefix());
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 					if (!Objects.equals(rs.getString(1), arg) || rs.getString(2) == null) {
@@ -81,8 +81,8 @@ public class WarpStorageSql
 	public Set<String> listWarp() {
 		Set<String> warps = new HashSet<>();
 		try (PreparedStatement selectStatement = SqlManager.getConnection()
-		                                                   .prepareStatement(
-				                                                   "SELECT * FROM " + Sql.getPrefix() + "Warp")) {
+		                                                   .prepareStatement("SELECT * FROM ?" + "Warp")) {
+			selectStatement.setString(1, Sql.getPrefix());
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 					warps.add(rs.getString(1));
@@ -103,16 +103,17 @@ public class WarpStorageSql
 		Chat.sendMessage(player, "warp-set");
 		clear(arg);
 		try (PreparedStatement insertStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("INSERT INTO " + Sql.getPrefix()
+		                                                   .prepareStatement("INSERT INTO ?"
 		                                                                     + "Warp (`Warp`, `World`, `X`, `Y`, `Z`, `Yaw`, `Pitch`) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-			insertStatement.setString(1, arg);
-			insertStatement.setString(2, location.getWorld()
+			insertStatement.setString(1, Sql.getPrefix());
+			insertStatement.setString(2, arg);
+			insertStatement.setString(3, location.getWorld()
 			                                     .getName());
-			insertStatement.setInt(3, (int) location.getX());
-			insertStatement.setInt(4, (int) location.getY());
-			insertStatement.setInt(5, (int) location.getZ());
-			insertStatement.setInt(6, (int) location.getYaw());
-			insertStatement.setInt(7, (int) location.getPitch());
+			insertStatement.setInt(4, (int) location.getX());
+			insertStatement.setInt(5, (int) location.getY());
+			insertStatement.setInt(6, (int) location.getZ());
+			insertStatement.setInt(7, (int) location.getYaw());
+			insertStatement.setInt(8, (int) location.getPitch());
 			insertStatement.executeUpdate();
 		}
 		catch (SQLException ignored) {
@@ -124,9 +125,9 @@ public class WarpStorageSql
 	@Override
 	public void clear(@NotNull String arg) {
 		try (PreparedStatement deleteStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("DELETE FROM " + Sql.getPrefix()
-		                                                                     + "Warp WHERE `Warp`=" + "'" + arg
-		                                                                     + "'")) {
+		                                                   .prepareStatement("DELETE FROM ?" + "Warp WHERE `Warp`=?")) {
+			deleteStatement.setString(1, Sql.getPrefix());
+			deleteStatement.setString(2, "'" + arg + "'");
 			deleteStatement.executeUpdate();
 		}
 		catch (SQLException ignored) {

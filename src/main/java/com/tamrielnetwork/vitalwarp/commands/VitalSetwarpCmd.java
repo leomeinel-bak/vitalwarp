@@ -44,7 +44,7 @@ public class VitalSetwarpCmd
 	}
 
 	private void setWarp(@NotNull CommandSender sender, String arg) {
-		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.setwarp", arg)) {
+		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.setwarp")) {
 			return;
 		}
 		Player senderPlayer = (Player) sender;
