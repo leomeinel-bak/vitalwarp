@@ -127,7 +127,7 @@ public class WarpStorageSql
 		try (PreparedStatement deleteStatement = SqlManager.getConnection()
 		                                                   .prepareStatement("DELETE FROM ?" + "Warp WHERE `Warp`=?")) {
 			deleteStatement.setString(1, Sql.getPrefix());
-			deleteStatement.setString(2, "'" + arg + "'");
+			deleteStatement.setString(2, arg);
 			deleteStatement.executeUpdate();
 		}
 		catch (SQLException ignored) {
