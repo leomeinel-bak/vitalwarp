@@ -38,65 +38,57 @@ public class CmdSpec {
 	private static final List<UUID> onActiveDelay = new ArrayList<>();
 
 	private CmdSpec() {
-
 		throw new IllegalStateException("Utility class");
 	}
 
 	public static void doDelay(@NotNull CommandSender sender, Location location) {
-
 		Player senderPlayer = (Player) sender;
-
 		if (!senderPlayer.hasPermission("vitalwarp.delay.bypass")) {
 			if (onActiveDelay.contains(senderPlayer.getUniqueId())) {
 				Chat.sendMessage(sender, "active-delay");
 				return;
 			}
 			onActiveDelay.add(senderPlayer.getUniqueId());
-			String timeRemaining = String.valueOf(main.getConfig().getLong("delay.time"));
+			String timeRemaining = String.valueOf(main.getConfig()
+			                                          .getLong("delay.time"));
 			Chat.sendMessage(senderPlayer, Map.of("%countdown%", timeRemaining), "countdown");
 			new BukkitRunnable() {
 
 				@Override
 				public void run() {
-
 					if (Cmd.isInvalidPlayer(senderPlayer)) {
 						onActiveDelay.remove(senderPlayer.getUniqueId());
 						return;
 					}
-
 					senderPlayer.teleport(location);
 					onActiveDelay.remove(senderPlayer.getUniqueId());
 				}
-			}.runTaskLater(main, (main.getConfig().getLong("delay.time") * 20L));
-		} else {
+			}.runTaskLater(main, (main.getConfig()
+			                          .getLong("delay.time") * 20L));
+		}
+		else {
 			senderPlayer.teleport(location);
 		}
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String perm, @NotNull String arg) {
-
 		if (Cmd.isInvalidSender(sender)) {
 			return true;
 		}
-
 		if (Cmd.isNotPermitted(sender, perm)) {
 			return true;
 		}
-
 		return isInvalidName(sender, arg);
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String perm) {
-
 		if (Cmd.isInvalidSender(sender)) {
 			return true;
 		}
-
 		return Cmd.isNotPermitted(sender, perm);
 	}
 
 	public static boolean isInvalidLocation(Location location) {
-
 		if (location == null) {
 			return true;
 		}
@@ -104,12 +96,11 @@ public class CmdSpec {
 	}
 
 	private static boolean isInvalidName(@NotNull CommandSender sender, @NotNull String arg) {
-
-		if (!arg.toLowerCase().matches("[a-z0-9]{1,16}")) {
+		if (!arg.toLowerCase()
+		        .matches("[a-z0-9]{1,16}")) {
 			Chat.sendMessage(sender, "invalid-name");
 			return true;
 		}
 		return false;
 	}
-
 }

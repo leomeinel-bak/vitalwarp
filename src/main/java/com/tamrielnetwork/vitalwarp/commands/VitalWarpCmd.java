@@ -32,43 +32,42 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VitalWarpCmd implements TabExecutor {
+public class VitalWarpCmd
+		implements TabExecutor {
 
 	private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+	                         @NotNull String[] args) {
 		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
 			return false;
 		}
 		doWarp(sender, args[0]);
 		return true;
-
 	}
 
 	private void doWarp(@NotNull CommandSender sender, String arg) {
-
 		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.warp", arg)) {
 			return;
 		}
-		Location location = main.getWarpStorage().loadWarp(arg.toLowerCase());
-
+		Location location = main.getWarpStorage()
+		                        .loadWarp(arg.toLowerCase());
 		if (CmdSpec.isInvalidLocation(location)) {
 			return;
 		}
-
 		CmdSpec.doDelay(sender, location);
-
 	}
 
 	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-
-		if (main.getWarpStorage().listWarp().isEmpty()) {
+	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
+	                                            @NotNull String alias, @NotNull String[] args) {
+		if (main.getWarpStorage()
+		        .listWarp()
+		        .isEmpty()) {
 			return null;
 		}
-		return new ArrayList<>(main.getWarpStorage().listWarp());
+		return new ArrayList<>(main.getWarpStorage()
+		                           .listWarp());
 	}
-
 }

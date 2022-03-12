@@ -32,39 +32,39 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VitalDelWarpCmd implements TabExecutor {
+public class VitalDelWarpCmd
+		implements TabExecutor {
 
 	private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+	                         @NotNull String[] args) {
 		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
 			return false;
 		}
 		delWarp(sender, args[0]);
 		return true;
-
 	}
 
 	private void delWarp(@NotNull CommandSender sender, String arg) {
-
 		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.delwarp", arg)) {
 			return;
 		}
-
-		main.getWarpStorage().clear(arg.toLowerCase());
+		main.getWarpStorage()
+		    .clear(arg.toLowerCase());
 		Chat.sendMessage(sender, "warp-removed");
-
 	}
 
 	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-
-		if (main.getWarpStorage().listWarp().isEmpty()) {
+	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
+	                                            @NotNull String alias, @NotNull String[] args) {
+		if (main.getWarpStorage()
+		        .listWarp()
+		        .isEmpty()) {
 			return null;
 		}
-		return new ArrayList<>(main.getWarpStorage().listWarp());
+		return new ArrayList<>(main.getWarpStorage()
+		                           .listWarp());
 	}
-
 }

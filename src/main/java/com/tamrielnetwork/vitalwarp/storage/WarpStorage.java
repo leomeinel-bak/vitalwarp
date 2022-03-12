@@ -37,5 +37,4 @@ public abstract class WarpStorage {
 	public abstract void saveWarp(@NotNull Player player, @NotNull String arg);
 
 	public abstract void clear(@NotNull String arg);
-
 }

@@ -28,30 +28,27 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class VitalSetwarpCmd implements CommandExecutor {
+public class VitalSetwarpCmd
+		implements CommandExecutor {
 
 	private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+	                         @NotNull String[] args) {
 		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
 			return false;
 		}
 		setWarp(sender, args[0]);
 		return true;
-
 	}
 
 	private void setWarp(@NotNull CommandSender sender, String arg) {
-
 		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.setwarp", arg)) {
 			return;
 		}
 		Player senderPlayer = (Player) sender;
-
-		main.getWarpStorage().saveWarp(senderPlayer, arg.toLowerCase());
-
+		main.getWarpStorage()
+		    .saveWarp(senderPlayer, arg.toLowerCase());
 	}
-
 }

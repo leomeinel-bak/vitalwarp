@@ -31,65 +31,70 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public final class VitalWarp extends JavaPlugin {
+public final class VitalWarp
+		extends JavaPlugin {
 
 	private WarpStorage warpStorage;
 	private Messages messages;
 
 	@Override
 	public void onEnable() {
-
 		registerCommands();
-
 		saveDefaultConfig();
-
 		setupStorage();
-
 		messages = new Messages();
-
-		Bukkit.getLogger().info("VitalWarp v" + this.getDescription().getVersion() + " enabled");
-		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
-		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
-		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
-		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/VitalWarp/blob/main/LICENSE for more details.");
+		Bukkit.getLogger()
+		      .info("VitalWarp v" + this.getDescription()
+		                                .getVersion() + " enabled");
+		Bukkit.getLogger()
+		      .info("Copyright (C) 2022 Leopold Meinel");
+		Bukkit.getLogger()
+		      .info("This program comes with ABSOLUTELY NO WARRANTY!");
+		Bukkit.getLogger()
+		      .info("This is free software, and you are welcome to redistribute it under certain conditions.");
+		Bukkit.getLogger()
+		      .info("See https://github.com/TamrielNetwork/VitalWarp/blob/main/LICENSE for more details.");
 	}
 
 	@Override
 	public void onDisable() {
-
-		Bukkit.getLogger().info("VitalWarp v" + this.getDescription().getVersion() + " disabled");
+		Bukkit.getLogger()
+		      .info("VitalWarp v" + this.getDescription()
+		                                .getVersion() + " disabled");
 	}
 
 	private void setupStorage() {
-
 		String storageSystem = getConfig().getString("storage-system");
-
-		if (Objects.requireNonNull(storageSystem).equalsIgnoreCase("mysql")) {
+		if (Objects.requireNonNull(storageSystem)
+		           .equalsIgnoreCase("mysql")) {
 			this.warpStorage = new WarpStorageSql();
-		} else {
+		}
+		else {
 			this.warpStorage = new WarpStorageYaml();
 		}
 	}
 
 	private void registerCommands() {
-
-		Objects.requireNonNull(getCommand("warp")).setExecutor(new VitalWarpCmd());
-		Objects.requireNonNull(getCommand("warp")).setTabCompleter(new VitalWarpCmd());
-		Objects.requireNonNull(getCommand("warps")).setExecutor(new VitalWarpsCmd());
-		Objects.requireNonNull(getCommand("setwarp")).setExecutor(new VitalSetwarpCmd());
-		Objects.requireNonNull(getCommand("delwarp")).setExecutor(new VitalDelWarpCmd());
-		Objects.requireNonNull(getCommand("delwarp")).setTabCompleter(new VitalDelWarpCmd());
+		Objects.requireNonNull(getCommand("warp"))
+		       .setExecutor(new VitalWarpCmd());
+		Objects.requireNonNull(getCommand("warp"))
+		       .setTabCompleter(new VitalWarpCmd());
+		Objects.requireNonNull(getCommand("warps"))
+		       .setExecutor(new VitalWarpsCmd());
+		Objects.requireNonNull(getCommand("setwarp"))
+		       .setExecutor(new VitalSetwarpCmd());
+		Objects.requireNonNull(getCommand("delwarp"))
+		       .setExecutor(new VitalDelWarpCmd());
+		Objects.requireNonNull(getCommand("delwarp"))
+		       .setTabCompleter(new VitalDelWarpCmd());
 	}
 
 	public Messages getMessages() {
-
 		return messages;
 	}
 
 	public WarpStorage getWarpStorage() {
-
 		return warpStorage;
 	}
-
 }
 
