@@ -99,10 +99,9 @@ public class WarpStorageYaml
 				warpConf.set(WARP + key, null);
 			}
 		}
-		save();
 	}
 
-	public void save() {
+	private void save() {
 		try {
 			warpConf.save(warpFile);
 		}
