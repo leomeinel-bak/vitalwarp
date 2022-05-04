@@ -2,8 +2,7 @@ name: VitalWarp
 version: @version@
 main: com.tamrielnetwork.vitalwarp.VitalWarp
 api-version: 1.17
-authors: [ Tamriel Network ]
-website: https://tamriel.site
+authors: [ Leopold Meinel ]
 description: Gives players the ability to set warps and teleport to them.
 commands:
   warp:
