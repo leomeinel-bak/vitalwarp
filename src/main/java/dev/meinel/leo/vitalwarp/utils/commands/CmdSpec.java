@@ -16,10 +16,10 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalwarp.utils.commands;
+package dev.meinel.leo.vitalwarp.utils.commands;
 
-import com.tamrielnetwork.vitalwarp.VitalWarp;
-import com.tamrielnetwork.vitalwarp.utils.Chat;
+import dev.meinel.leo.vitalwarp.VitalWarp;
+import dev.meinel.leo.vitalwarp.utils.Chat;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

@@ -16,58 +16,61 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalwarp.commands;
+package dev.meinel.leo.vitalwarp.commands;
 
-import com.tamrielnetwork.vitalwarp.VitalWarp;
-import com.tamrielnetwork.vitalwarp.utils.commands.Cmd;
-import com.tamrielnetwork.vitalwarp.utils.commands.CmdSpec;
-import org.bukkit.Location;
+import dev.meinel.leo.vitalwarp.VitalWarp;
+import dev.meinel.leo.vitalwarp.utils.Chat;
+import dev.meinel.leo.vitalwarp.utils.commands.Cmd;
+import dev.meinel.leo.vitalwarp.utils.commands.CmdSpec;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-public class VitalWarpCmd
-		implements TabExecutor {
+public class VitalWarpsCmd
+		implements CommandExecutor {
 
 	private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
 	                         @NotNull String[] args) {
-		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
+		if (Cmd.isArgsLengthNotEqualTo(sender, args, 0)) {
 			return false;
 		}
-		doWarp(sender, args[0]);
+		doWarps(sender);
 		return true;
 	}
 
-	private void doWarp(@NotNull CommandSender sender, String arg) {
-		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.warp")) {
+	private void doWarps(@NotNull CommandSender sender) {
+		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.list")) {
 			return;
 		}
-		Location location = main.getWarpStorage()
-		                        .loadWarp(arg.toLowerCase());
-		if (CmdSpec.isInvalidLocation(location)) {
+		StringBuilder warpsBuilder = new StringBuilder();
+		Set<String> warpsSet = main.getWarpStorage()
+		                           .listWarp();
+		if (warpsSet.isEmpty()) {
+			Chat.sendMessage(sender, "no-warps");
 			return;
 		}
-		CmdSpec.doDelay(sender, location);
-	}
-
-	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
-	                                            @NotNull String alias, @NotNull String[] args) {
-		if (main.getWarpStorage()
-		        .listWarp()
-		        .isEmpty()) {
-			return null;
+		List<String> warpsList = main.getWarpStorage()
+		                             .listWarp()
+		                             .stream()
+		                             .toList();
+		for (String warp : warpsList) {
+			if (warp.equals(warpsList.get(0))) {
+				warpsBuilder.append("&b")
+				            .append(warp);
+				continue;
+			}
+			warpsBuilder.append("&f, &b")
+			            .append(warp);
 		}
-		return new ArrayList<>(main.getWarpStorage()
-		                           .listWarp());
+		String warps = warpsBuilder.toString();
+		sender.sendMessage(Chat.replaceColors(warps));
 	}
 }

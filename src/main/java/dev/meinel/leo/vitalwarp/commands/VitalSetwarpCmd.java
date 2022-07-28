@@ -16,24 +16,20 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalwarp.commands;
+package dev.meinel.leo.vitalwarp.commands;
 
-import com.tamrielnetwork.vitalwarp.VitalWarp;
-import com.tamrielnetwork.vitalwarp.utils.Chat;
-import com.tamrielnetwork.vitalwarp.utils.commands.Cmd;
-import com.tamrielnetwork.vitalwarp.utils.commands.CmdSpec;
+import dev.meinel.leo.vitalwarp.VitalWarp;
+import dev.meinel.leo.vitalwarp.utils.commands.Cmd;
+import dev.meinel.leo.vitalwarp.utils.commands.CmdSpec;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class VitalDelWarpCmd
-		implements TabExecutor {
+public class VitalSetwarpCmd
+		implements CommandExecutor {
 
 	private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
@@ -43,28 +39,16 @@ public class VitalDelWarpCmd
 		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
 			return false;
 		}
-		delWarp(sender, args[0]);
+		setWarp(sender, args[0]);
 		return true;
 	}
 
-	private void delWarp(@NotNull CommandSender sender, String arg) {
-		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.delwarp")) {
+	private void setWarp(@NotNull CommandSender sender, String arg) {
+		if (CmdSpec.isInvalidCmd(sender, "vitalwarp.setwarp")) {
 			return;
 		}
+		Player senderPlayer = (Player) sender;
 		main.getWarpStorage()
-		    .clear(arg.toLowerCase());
-		Chat.sendMessage(sender, "warp-removed");
-	}
-
-	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
-	                                            @NotNull String alias, @NotNull String[] args) {
-		if (main.getWarpStorage()
-		        .listWarp()
-		        .isEmpty()) {
-			return null;
-		}
-		return new ArrayList<>(main.getWarpStorage()
-		                           .listWarp());
+		    .saveWarp(senderPlayer, arg.toLowerCase());
 	}
 }

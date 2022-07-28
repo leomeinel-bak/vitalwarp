@@ -16,16 +16,16 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalwarp;
+package dev.meinel.leo.vitalwarp;
 
-import com.tamrielnetwork.vitalwarp.commands.VitalDelWarpCmd;
-import com.tamrielnetwork.vitalwarp.commands.VitalSetwarpCmd;
-import com.tamrielnetwork.vitalwarp.commands.VitalWarpCmd;
-import com.tamrielnetwork.vitalwarp.commands.VitalWarpsCmd;
-import com.tamrielnetwork.vitalwarp.files.Messages;
-import com.tamrielnetwork.vitalwarp.storage.WarpStorage;
-import com.tamrielnetwork.vitalwarp.storage.WarpStorageSql;
-import com.tamrielnetwork.vitalwarp.storage.WarpStorageYaml;
+import dev.meinel.leo.vitalwarp.commands.VitalDelWarpCmd;
+import dev.meinel.leo.vitalwarp.commands.VitalSetwarpCmd;
+import dev.meinel.leo.vitalwarp.commands.VitalWarpCmd;
+import dev.meinel.leo.vitalwarp.commands.VitalWarpsCmd;
+import dev.meinel.leo.vitalwarp.files.Messages;
+import dev.meinel.leo.vitalwarp.storage.WarpStorage;
+import dev.meinel.leo.vitalwarp.storage.WarpStorageSql;
+import dev.meinel.leo.vitalwarp.storage.WarpStorageYaml;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

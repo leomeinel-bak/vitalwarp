@@ -16,34 +16,25 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalwarp.files;
+package dev.meinel.leo.vitalwarp.storage;
 
-import com.tamrielnetwork.vitalwarp.VitalWarp;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import dev.meinel.leo.vitalwarp.VitalWarp;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
+import java.util.Set;
 
-public class Messages {
+public abstract class WarpStorage {
 
-	private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
-	private final File messagesFile;
-	private final FileConfiguration messagesConf;
+	protected final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
-	public Messages() {
-		messagesFile = new File(main.getDataFolder(), "messages.yml");
-		saveMessagesFile();
-		messagesConf = YamlConfiguration.loadConfiguration(messagesFile);
-	}
+	public abstract Location loadWarp(@NotNull String arg);
 
-	private void saveMessagesFile() {
-		if (!messagesFile.exists()) {
-			main.saveResource("messages.yml", false);
-		}
-	}
+	public abstract Set<String> listWarp();
 
-	public FileConfiguration getMessagesConf() {
-		return messagesConf;
-	}
+	public abstract void saveWarp(@NotNull Player player, @NotNull String arg);
+
+	public abstract void clear(@NotNull String arg);
 }

@@ -16,9 +16,9 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalwarp.utils.sql;
+package dev.meinel.leo.vitalwarp.utils.sql;
 
-import com.tamrielnetwork.vitalwarp.VitalWarp;
+import dev.meinel.leo.vitalwarp.VitalWarp;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Sql {
