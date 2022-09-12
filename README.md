@@ -1,4 +1,5 @@
 <!-- PROJECT SHIELDS -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -69,12 +70,12 @@ This plugin is perfect for any server wanting their players to have specific poi
 
 ### Features
 
-* Set warps and teleport to them.
+- Set warps and teleport to them.
 
 ### Built With
 
-* [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
-* [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
+- [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
+- [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
 
 <!-- GETTING STARTED -->
 
@@ -86,27 +87,27 @@ To get the plugin running on your server follow these simple steps.
 
 1. Permission: `vitalwarp.warp`
 
-* Command: `/warp <name>`
-* Description: Teleport to a warp
+- Command: `/warp <name>`
+- Description: Teleport to a warp
 
 2. Permission: `vitalwarp.setwarp`
 
-* Command: `/setwarp <name>`
-* Description: Set a warp
+- Command: `/setwarp <name>`
+- Description: Set a warp
 
 3. Permission: `vitalwarp.delwarp`
 
-* Command: `/delwarp <name>`
-* Description: Delete a warp
+- Command: `/delwarp <name>`
+- Description: Delete a warp
 
 4. Permission: `vitalwarp.list`
 
-* Command: `/warps`
-* Description: List warps
+- Command: `/warps`
+- Description: List warps
 
 5. Permission: `vitalwarp.delay.bypass`
 
-* Description: Bypass delay
+- Description: Bypass delay
 
 ### Configuration - config.yml
 
@@ -181,30 +182,19 @@ Project Link - [VitalWarp](https://github.com/LeoMeinel/VitalWarp) - GitHub
 
 ### Acknowledgements
 
-* [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
+- [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/VitalWarp?style=for-the-badge
-
 [contributors-url]: https://github.com/LeoMeinel/VitalWarp/graphs/contributors
-
 [forks-shield]: https://img.shields.io/github/forks/LeoMeinel/VitalWarp?label=Forks&style=for-the-badge
-
 [forks-url]: https://github.com/LeoMeinel/VitalWarp/network/members
-
 [stars-shield]: https://img.shields.io/github/stars/LeoMeinel/VitalWarp?style=for-the-badge
-
 [stars-url]: https://github.com/LeoMeinel/VitalWarp/stargazers
-
 [issues-shield]: https://img.shields.io/github/issues/LeoMeinel/VitalWarp?style=for-the-badge
-
 [issues-url]: https://github.com/LeoMeinel/VitalWarp/issues
-
 [license-shield]: https://img.shields.io/github/license/LeoMeinel/VitalWarp?style=for-the-badge
-
 [license-url]: https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
-
 [quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/VitalWarp?style=for-the-badge
-
 [quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/VitalWarp
