@@ -25,51 +25,51 @@ import org.jetbrains.annotations.NotNull;
 
 public class CmdSpec {
 
-  private static final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
-  private static final List<UUID> onActiveDelay = new ArrayList<>();
+    private static final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
+    private static final List<UUID> onActiveDelay = new ArrayList<>();
 
-  private CmdSpec() {
-    throw new IllegalStateException("Utility class");
-  }
-
-  public static void doDelay(@NotNull CommandSender sender, Location location) {
-    Player senderPlayer = (Player) sender;
-    if (!senderPlayer.hasPermission("vitalwarp.delay.bypass")) {
-      if (onActiveDelay.contains(senderPlayer.getUniqueId())) {
-        Chat.sendMessage(sender, "active-delay");
-        return;
-      }
-      onActiveDelay.add(senderPlayer.getUniqueId());
-      String timeRemaining = String.valueOf(
-          main.getConfig().getLong("delay.time"));
-      Chat.sendMessage(
-          senderPlayer,
-          Map.of("%countdown%", timeRemaining),
-          "countdown");
-      new BukkitRunnable() {
-        @Override
-        public void run() {
-          if (Cmd.isInvalidPlayer(senderPlayer)) {
-            onActiveDelay.remove(senderPlayer.getUniqueId());
-            return;
-          }
-          senderPlayer.teleport(location);
-          onActiveDelay.remove(senderPlayer.getUniqueId());
-        }
-      }
-          .runTaskLater(main, (main.getConfig().getLong("delay.time") * 20L));
-    } else {
-      senderPlayer.teleport(location);
+    private CmdSpec() {
+        throw new IllegalStateException("Utility class");
     }
-  }
 
-  public static boolean isInvalidCmd(
-      @NotNull CommandSender sender,
-      @NotNull String perm) {
-    return Cmd.isInvalidSender(sender) || Cmd.isNotPermitted(sender, perm);
-  }
+    public static void doDelay(@NotNull CommandSender sender, Location location) {
+        Player senderPlayer = (Player) sender;
+        if (!senderPlayer.hasPermission("vitalwarp.delay.bypass")) {
+            if (onActiveDelay.contains(senderPlayer.getUniqueId())) {
+                Chat.sendMessage(sender, "active-delay");
+                return;
+            }
+            onActiveDelay.add(senderPlayer.getUniqueId());
+            String timeRemaining = String.valueOf(
+                    main.getConfig().getLong("delay.time"));
+            Chat.sendMessage(
+                    senderPlayer,
+                    Map.of("%countdown%", timeRemaining),
+                    "countdown");
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (Cmd.isInvalidPlayer(senderPlayer)) {
+                        onActiveDelay.remove(senderPlayer.getUniqueId());
+                        return;
+                    }
+                    senderPlayer.teleport(location);
+                    onActiveDelay.remove(senderPlayer.getUniqueId());
+                }
+            }
+                    .runTaskLater(main, (main.getConfig().getLong("delay.time") * 20L));
+        } else {
+            senderPlayer.teleport(location);
+        }
+    }
 
-  public static boolean isInvalidLocation(Location location) {
-    return location == null || location.getWorld() == null;
-  }
+    public static boolean isInvalidCmd(
+            @NotNull CommandSender sender,
+            @NotNull String perm) {
+        return Cmd.isInvalidSender(sender) || Cmd.isNotPermitted(sender, perm);
+    }
+
+    public static boolean isInvalidLocation(Location location) {
+        return location == null || location.getWorld() == null;
+    }
 }

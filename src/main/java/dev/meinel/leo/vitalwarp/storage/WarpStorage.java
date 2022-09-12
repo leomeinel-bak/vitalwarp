@@ -19,13 +19,13 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class WarpStorage {
 
-  protected final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
+    protected final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
-  public abstract Location loadWarp(@NotNull String arg);
+    public abstract Location loadWarp(@NotNull String arg);
 
-  public abstract Set<String> listWarp();
+    public abstract Set<String> listWarp();
 
-  public abstract void saveWarp(@NotNull Player player, @NotNull String arg);
+    public abstract void saveWarp(@NotNull Player player, @NotNull String arg);
 
-  public abstract void clear(@NotNull String arg);
+    public abstract void clear(@NotNull String arg);
 }

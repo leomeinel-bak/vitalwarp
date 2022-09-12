@@ -24,40 +24,40 @@ import org.jetbrains.annotations.NotNull;
 
 public class VitalWarpsCmd implements CommandExecutor {
 
-  private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
+    private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
-  @Override
-  public boolean onCommand(
-      @NotNull CommandSender sender,
-      @NotNull Command command,
-      @NotNull String label,
-      @NotNull String[] args) {
-    if (Cmd.isArgsLengthNotEqualTo(sender, args, 0)) {
-      return false;
+    @Override
+    public boolean onCommand(
+            @NotNull CommandSender sender,
+            @NotNull Command command,
+            @NotNull String label,
+            @NotNull String[] args) {
+        if (Cmd.isArgsLengthNotEqualTo(sender, args, 0)) {
+            return false;
+        }
+        doWarps(sender);
+        return true;
     }
-    doWarps(sender);
-    return true;
-  }
 
-  private void doWarps(@NotNull CommandSender sender) {
-    if (CmdSpec.isInvalidCmd(sender, "vitalwarp.list")) {
-      return;
+    private void doWarps(@NotNull CommandSender sender) {
+        if (CmdSpec.isInvalidCmd(sender, "vitalwarp.list")) {
+            return;
+        }
+        StringBuilder warpsBuilder = new StringBuilder();
+        Set<String> warpsSet = main.getWarpStorage().listWarp();
+        if (warpsSet.isEmpty()) {
+            Chat.sendMessage(sender, "no-warps");
+            return;
+        }
+        List<String> warpsList = main.getWarpStorage().listWarp().stream().toList();
+        for (String warp : warpsList) {
+            if (warp.equals(warpsList.get(0))) {
+                warpsBuilder.append("&b").append(warp);
+                continue;
+            }
+            warpsBuilder.append("&f, &b").append(warp);
+        }
+        String warps = warpsBuilder.toString();
+        sender.sendMessage(Chat.replaceColors(warps));
     }
-    StringBuilder warpsBuilder = new StringBuilder();
-    Set<String> warpsSet = main.getWarpStorage().listWarp();
-    if (warpsSet.isEmpty()) {
-      Chat.sendMessage(sender, "no-warps");
-      return;
-    }
-    List<String> warpsList = main.getWarpStorage().listWarp().stream().toList();
-    for (String warp : warpsList) {
-      if (warp.equals(warpsList.get(0))) {
-        warpsBuilder.append("&b").append(warp);
-        continue;
-      }
-      warpsBuilder.append("&f, &b").append(warp);
-    }
-    String warps = warpsBuilder.toString();
-    sender.sendMessage(Chat.replaceColors(warps));
-  }
 }

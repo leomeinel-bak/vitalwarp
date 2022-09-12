@@ -25,38 +25,38 @@ import org.jetbrains.annotations.Nullable;
 
 public class VitalDelWarpCmd implements TabExecutor {
 
-  private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
+    private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
-  @Override
-  public boolean onCommand(
-      @NotNull CommandSender sender,
-      @NotNull Command command,
-      @NotNull String label,
-      @NotNull String[] args) {
-    if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
-      return false;
+    @Override
+    public boolean onCommand(
+            @NotNull CommandSender sender,
+            @NotNull Command command,
+            @NotNull String label,
+            @NotNull String[] args) {
+        if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
+            return false;
+        }
+        delWarp(sender, args[0]);
+        return true;
     }
-    delWarp(sender, args[0]);
-    return true;
-  }
 
-  private void delWarp(@NotNull CommandSender sender, String arg) {
-    if (CmdSpec.isInvalidCmd(sender, "vitalwarp.delwarp")) {
-      return;
+    private void delWarp(@NotNull CommandSender sender, String arg) {
+        if (CmdSpec.isInvalidCmd(sender, "vitalwarp.delwarp")) {
+            return;
+        }
+        main.getWarpStorage().clear(arg.toLowerCase());
+        Chat.sendMessage(sender, "warp-removed");
     }
-    main.getWarpStorage().clear(arg.toLowerCase());
-    Chat.sendMessage(sender, "warp-removed");
-  }
 
-  @Override
-  public @Nullable List<String> onTabComplete(
-      @NotNull CommandSender sender,
-      @NotNull Command command,
-      @NotNull String alias,
-      @NotNull String[] args) {
-    if (main.getWarpStorage().listWarp().isEmpty()) {
-      return null;
+    @Override
+    public @Nullable List<String> onTabComplete(
+            @NotNull CommandSender sender,
+            @NotNull Command command,
+            @NotNull String alias,
+            @NotNull String[] args) {
+        if (main.getWarpStorage().listWarp().isEmpty()) {
+            return null;
+        }
+        return new ArrayList<>(main.getWarpStorage().listWarp());
     }
-    return new ArrayList<>(main.getWarpStorage().listWarp());
-  }
 }
