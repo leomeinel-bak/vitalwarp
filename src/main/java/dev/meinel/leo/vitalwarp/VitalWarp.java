@@ -45,7 +45,7 @@ public final class VitalWarp extends JavaPlugin {
         Bukkit
                 .getLogger()
                 .info(
-                        "See https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE for more details.");
+                        "See https://www.gnu.org/licenses/gpl-3.0-standalone.html for more details.");
     }
 
     @Override

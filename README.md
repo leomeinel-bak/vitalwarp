@@ -11,7 +11,7 @@
 <!--suppress ALL -->
 <br />
 <p align="center">
-  <a href="https://github.com/LeoMeinel/VitalWarp">
+  <a href="https://github.com/LeoMeinel/vitalwarp">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -20,14 +20,14 @@
   <p align="center">
     Set warps on Spigot and Paper
     <br />
-    <a href="https://github.com/LeoMeinel/VitalWarp"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LeoMeinel/vitalwarp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/LeoMeinel/VitalWarp">View Demo</a>
+    <a href="https://github.com/LeoMeinel/vitalwarp">View Demo</a>
     ·
-    <a href="https://github.com/LeoMeinel/VitalWarp/issues">Report Bug</a>
+    <a href="https://github.com/LeoMeinel/vitalwarp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/LeoMeinel/VitalWarp/issues">Request Feature</a>
+    <a href="https://github.com/LeoMeinel/vitalwarp/issues">Request Feature</a>
   </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -120,7 +120,7 @@ no-warps: "&cThere are no warps!"
 
 ## Roadmap
 
-See the [open issues](https://github.com/LeoMeinel/VitalWarp/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/LeoMeinel/vitalwarp/issues) for a list of proposed features (and known
 issues).
 
 <!-- CONTRIBUTING -->
@@ -148,7 +148,7 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 Leopold Meinel - [leo@meinel.dev](mailto:leo@meinel.dev) - eMail
 
-Project Link - [VitalWarp](https://github.com/LeoMeinel/VitalWarp) - GitHub
+Project Link - [VitalWarp](https://github.com/LeoMeinel/vitalwarp) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -158,15 +158,15 @@ Project Link - [VitalWarp](https://github.com/LeoMeinel/VitalWarp) - GitHub
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/VitalWarp?style=for-the-badge
-[contributors-url]: https://github.com/LeoMeinel/VitalWarp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/VitalWarp?label=Forks&style=for-the-badge
-[forks-url]: https://github.com/LeoMeinel/VitalWarp/network/members
-[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/VitalWarp?style=for-the-badge
-[stars-url]: https://github.com/LeoMeinel/VitalWarp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/VitalWarp?style=for-the-badge
-[issues-url]: https://github.com/LeoMeinel/VitalWarp/issues
-[license-shield]: https://img.shields.io/github/license/LeoMeinel/VitalWarp?style=for-the-badge
-[license-url]: https://github.com/LeoMeinel/VitalWarp/blob/main/LICENSE
-[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/VitalWarp?style=for-the-badge
-[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/VitalWarp
+[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/vitalwarp?style=for-the-badge
+[contributors-url]: https://github.com/LeoMeinel/vitalwarp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/vitalwarp?label=Forks&style=for-the-badge
+[forks-url]: https://github.com/LeoMeinel/vitalwarp/network/members
+[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/vitalwarp?style=for-the-badge
+[stars-url]: https://github.com/LeoMeinel/vitalwarp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/vitalwarp?style=for-the-badge
+[issues-url]: https://github.com/LeoMeinel/vitalwarp/issues
+[license-shield]: https://img.shields.io/github/license/LeoMeinel/vitalwarp?style=for-the-badge
+[license-url]: https://github.com/LeoMeinel/vitalwarp/blob/main/LICENSE
+[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/vitalwarp?style=for-the-badge
+[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/vitalwarp
