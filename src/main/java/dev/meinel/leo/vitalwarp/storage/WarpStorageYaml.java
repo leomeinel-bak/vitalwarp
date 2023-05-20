@@ -2,7 +2,7 @@
  * File: WarpStorageYaml.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -26,7 +26,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class WarpStorageYaml extends WarpStorage {
 
-    private static final String IOEXCEPTION = "VitalWarp encountered an IOException while executing task";
+    private static final String IOEXCEPTION =
+            "VitalWarp encountered an IOException while executing task";
     private static final String WARP = "warp.";
     private static final String WORLD = ".world";
     private final File warpFile;
@@ -43,8 +44,8 @@ public class WarpStorageYaml extends WarpStorage {
         if (warpConf.getString(WARP + arg + WORLD) == null) {
             return null;
         }
-        World world = Bukkit.getWorld(
-                Objects.requireNonNull(warpConf.getString(WARP + arg + WORLD)));
+        World world =
+                Bukkit.getWorld(Objects.requireNonNull(warpConf.getString(WARP + arg + WORLD)));
         int x = warpConf.getInt(WARP + arg + ".x");
         int y = warpConf.getInt(WARP + arg + ".y");
         int z = warpConf.getInt(WARP + arg + ".z");
@@ -59,9 +60,7 @@ public class WarpStorageYaml extends WarpStorage {
         if (warpConf.getString(WARP) == null) {
             return Collections.emptySet();
         }
-        warps = Objects
-                .requireNonNull(warpConf.getConfigurationSection(WARP))
-                .getKeys(false);
+        warps = Objects.requireNonNull(warpConf.getConfigurationSection(WARP)).getKeys(false);
         return warps;
     }
 
@@ -84,8 +83,7 @@ public class WarpStorageYaml extends WarpStorage {
         if (warpConf.getConfigurationSection(WARP) == null) {
             return;
         }
-        for (String key : Objects
-                .requireNonNull(warpConf.getConfigurationSection(WARP))
+        for (String key : Objects.requireNonNull(warpConf.getConfigurationSection(WARP))
                 .getKeys(false)) {
             if (Objects.equals(key, arg)) {
                 warpConf.set(WARP + key, null);

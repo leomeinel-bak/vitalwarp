@@ -2,7 +2,7 @@
  * File: VitalWarpsCmd.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -27,11 +27,8 @@ public class VitalWarpsCmd implements CommandExecutor {
     private final VitalWarp main = JavaPlugin.getPlugin(VitalWarp.class);
 
     @Override
-    public boolean onCommand(
-            @NotNull CommandSender sender,
-            @NotNull Command command,
-            @NotNull String label,
-            @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+            @NotNull String label, @NotNull String[] args) {
         if (Cmd.isArgsLengthNotEqualTo(sender, args, 0)) {
             return false;
         }
