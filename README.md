@@ -105,7 +105,6 @@ mysql:
 ### Configuration - messages.yml
 
 ```yaml
-cmd: "&fUsage: &b/warp <name>"
 warp-set: "&fWarp has been set"
 warp-removed: "&fWarp has been removed"
 no-perms: "&cYou don't have enough permissions!"
